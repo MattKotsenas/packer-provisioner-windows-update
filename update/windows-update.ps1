@@ -132,8 +132,10 @@ function ExitWhenRebootRequired($rebootRequired = $false) {
     }
 
     if ($rebootRequired) {
-        Write-Output 'Waiting for the Windows Modules Installer to exit...'
-        Wait-Condition {(Get-Process -ErrorAction SilentlyContinue TiWorker | Measure-Object).Count -eq 0}
+        #Write-Output 'Waiting for the Windows Modules Installer to exit...'
+        #Wait-Condition {(Get-Process -ErrorAction SilentlyContinue TiWorker | Measure-Object).Count -eq 0}
+        Write-Output 'Waiting 60 seconds for the Windows Modules Installer to exit...'
+        Start-Sleep -Seconds 60
         ExitWithCode 101
     }
 }
